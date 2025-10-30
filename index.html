@@ -11,6 +11,37 @@
       background-color: #0a0f1c;
       color: #e0e0e0;
     }
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      animation: fadeOut 2s ease-in-out 3s forwards;
+    }
+    #splash img {
+      width: 120px;
+      animation: spin 3s linear infinite;
+    }
+    #splash h1 {
+      color: #ff0000;
+      font-size: 1.5rem;
+      margin-top: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
     header {
       background: #111827;
       padding: 10px 20px;
@@ -105,6 +136,11 @@
   </style>
 </head>
 <body>
+  <div id="splash">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Umbrella_Corporation_logo.svg/512px-Umbrella_Corporation_logo.svg.png" alt="Umbrella Logo" />
+    <h1>Umbrella Tactical Systems</h1>
+  </div>
+
   <header>
     <h1>🛡️ Umbrella Tactical Intranet</h1>
     <span id="clock"></span>
