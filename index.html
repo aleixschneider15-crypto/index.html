@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Umbrella Tactical Intranet</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', monospace;
+      background-color: #0a0f1c;
+      color: #e0e0e0;
+    }
+    header {
+      background: #111827;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #2563eb;
+    }
+    header h1 {
+      font-size: 1.2rem;
+      color: #60a5fa;
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      height: calc(100vh - 50px);
+    }
+    nav {
+      width: 220px;
+      background: #1f2937;
+      padding: 20px;
+      border-right: 2px solid #2563eb;
+    }
+    nav button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background: #374151;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      text-align: left;
+    }
+    nav button:hover {
+      background: #2563eb;
+    }
+    main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .section {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+    .card {
+      background: #111827;
+      padding: 20px;
+      border: 1px solid #374151;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #374151;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #2563eb;
+      color: #fff;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid #374151;
+      border-radius: 4px;
+    }
+    button.submit {
+      margin-top: 12px;
+      padding: 10px 16px;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button.submit:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛡️ Umbrella Tactical Intranet</h1>
+    <span id="clock"></span>
+  </header>
+  <div class="container">
+    <nav>
+      <button onclick="mostrar('misiones')">📁 Misiones</button>
+      <button onclick="mostrar('agentes')">🧑‍✈️ Agentes</button>
+      <button onclick="mostrar('laboratorio')">🧬 Laboratorio</button>
+      <button onclick="mostrar('alertas')">⚠️ Alertas</button>
+    </nav>
+    <main>
+      <section id="misiones" class="section active">
+        <div class="card">
+          <h2>Misiones activas</h2>
+          <table>
+            <thead>
+              <tr><th>Nombre</th><th>Estado</th><th>Zona</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Operación Némesis</td><td>En curso</td><td>Sector RPD-3</td></tr>
+              <tr><td>Contención T-Virus</td><td>Finalizada</td><td>Laboratorio B</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Registrar nueva misión</h3>
+          <input type="text" placeholder="Nombre de misión" />
+          <input type="text" placeholder="Zona asignada" />
+          <select>
+            <option>Pendiente</option>
+            <option>En curso</option>
+            <option>Finalizada</option>
+          </select>
+          <textarea placeholder="Descripción táctica"></textarea>
+          <button class="submit">Registrar</button>
+        </div>
+      </section>
+
+      <section id="agentes" class="section">
+        <div class="card">
+          <h2>Agentes activos</h2>
+          <ul>
+            <li>🧑‍✈️ Jill Valentine — Rango: Teniente</li>
+            <li>🧑‍✈️ Chris Redfield — Rango: Capitán</li>
+            <li>🧑‍✈️ Albert Wesker — Rango: Supervisor</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="laboratorio" class="section">
+        <div class="card">
+          <h2>Laboratorio</h2>
+          <p>Estado de contención: <strong style="color:orange;">Inestable</strong></p>
+          <p>Último incidente: Fuga de espécimen T-002</p>
+          <p>Acceso restringido a personal nivel 4+</p>
+        </div>
+      </section>
+
+      <section id="alertas" class="section">
+        <div class="card">
+          <h2>Alertas recientes</h2>
+          <ul>
+            <li>⚠️ 22:14 — Movimiento no autorizado en pasillo B7</li>
+            <li>⚠️ 21:50 — Falla eléctrica en zona de cuarentena</li>
+            <li>⚠️ 20:30 — Código rojo en laboratorio subterráneo</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function mostrar(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function actualizarReloj() {
+      const ahora = new Date();
+      document.getElementById("clock").textContent = ahora.toLocaleTimeString();
+    }
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj();
+  </script>
+</body>
+</html>
